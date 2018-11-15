@@ -4,8 +4,8 @@
 $db_server = "sophia.cs.hku.hk";
 $db_user = "wzgao";
 $db_pwd = "Qwmgwz14";
-$link = mysql_connect($db_server, $db_user, $db_pwd) or die(mysql_error());
-$db_selected = mysql_select_db($db_user, $link);
+$link = ($GLOBALS["___mysqli_ston"] = mysqli_connect($db_server,  $db_user,  $db_pwd)) or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+$db_selected = mysqli_select_db( $link, $db_user);
 /* Step 4.1 End */
 
 /* Step 5.1 Start */
@@ -25,8 +25,8 @@ echo ', "teacher_' . $key . '":"' . $val . '"';
 /* Step 4.2 Start */
 $students = array();
 $sql = "SELECT name FROM students;";
-$res = mysql_query($sql) or die(mysql_error());
-while ($row = mysql_fetch_array($res)) {
+$res = mysqli_query($GLOBALS["___mysqli_ston"], $sql) or die(mysqli_error($GLOBALS["___mysqli_ston"]));
+while ($row = mysqli_fetch_array($res)) {
 	array_push($students, $row['name']);}
 echo ', "students":[';
 $add_delimiter = false;
