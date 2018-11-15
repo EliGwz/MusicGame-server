@@ -9,7 +9,12 @@ $db_selected = mysqli_select_db( $link, $db_user);
 /* Step 4.1 End */
 
 /* Step 5.1 Start */
-// Do something here..
+$action = (isset($_GET['action']) ? $_GET['action'] : "");
+$student_name = (isset($_GET['name']) ? $_GET['name'] : "");
+if ($action == "insert" && $student_name) {
+$sql = "INSERT INTO students (name) VALUES ('$student_name');";
+$res = mysqli_query($GLOBALS["___mysqli_ston"], $sql) or die(mysqli_error($GLOBALS["___mysqli_ston"]));$student_id = ((is_null($___mysqli_res = mysqli_insert_id($GLOBALS["___mysqli_ston"]))) ? false : $___mysqli_res);
+}
 /* Step 5.1 End */
 
 $course_code = "COMP7506";

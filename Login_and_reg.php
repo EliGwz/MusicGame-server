@@ -19,9 +19,9 @@ if(!$db_selected)
 
 if ($action == "login")
 {
-    $sql = "SELECT * FROM user WHERE id='".$uid."' and password='".$pwd."'";
+    $sql = "SELECT * FROM users WHERE id=('$uid') AND password=('$pwd');";
 
-        $res = mysqli_query($GLOBALS["___mysqli_ston"], $sql);
+    $res = mysqli_query($GLOBALS["___mysqli_ston"], $sql);
     if(!$res)
     {
         ((is_null($___mysqli_res = mysqli_close($link))) ? false : $___mysqli_res);
@@ -40,7 +40,7 @@ if ($action == "login")
 }
 else if ($action == "reg")
 {
-    $sql = "SELECT * FROM user WHERE id='".$id."'";
+    $sql = "SELECT * FROM users WHERE id=('$id');";
 
     $res = mysqli_query($GLOBALS["___mysqli_ston"], $sql);
     if (!$res)
@@ -57,7 +57,7 @@ else if ($action == "reg")
     }
     else
     {
-        $sql = "INSERT INTO user(id, password) VALUES('".$uid."','".$pwd."')";
+        $sql = "INSERT INTO users(id, password) VALUES(('$uid'),('$pwd'))";
 
 	$res = mysqli_query($GLOBALS["___mysqli_ston"], $sql);
 	if (!$res)
