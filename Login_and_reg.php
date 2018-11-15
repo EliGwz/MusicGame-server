@@ -40,7 +40,7 @@ if ($action == "login")
 }
 else if ($action == "reg")
 {
-    $sql = "SELECT * FROM users WHERE id=('$id');";
+    $sql = "SELECT * FROM users WHERE id=('$uid');";
 
     $res = mysqli_query($GLOBALS["___mysqli_ston"], $sql);
     if (!$res)
@@ -52,6 +52,7 @@ else if ($action == "reg")
     $recordCount = mysqli_num_rows($res);
     if ($recordCount > 0)
     {
+        echo "exist";
         ((is_null($___mysqli_res = mysqli_close($link))) ? false : $___mysqli_res);
 	die(mysqli_error($GLOBALS["___mysqli_ston"]));
     }
