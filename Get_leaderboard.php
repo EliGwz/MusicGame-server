@@ -15,7 +15,7 @@
         die(mysqli_error($GLOBALS["___mysqli_ston"]));
     }
 
-    $sql = "SELECT * FROM records WHERE song_id=('$sid');";
+    $sql = "SELECT * FROM records WHERE song_id=('$sid') ORDER BY score DESC;";
     $res = mysqli_query($GLOBALS["___mysqli_ston"], $sql);
     
     if (!$res)
@@ -28,5 +28,13 @@
     if ($recordCount == 0)
     {
         echo "empty";
+    }
+    else
+    {
+    	while($array = ($GLOBALS["___mysqli_ston"] = mysqli_fetch_array($res)))
+	{
+	    echo $array['user_id']."</next>";
+	    echo $array['score']."</next>";
+	}
     }
 ?>
