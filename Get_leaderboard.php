@@ -4,6 +4,7 @@
     $db_pwd = "Qwmgwz14";
 
       $sid = $_POST['song_ID'];
+      $sdiff = $_POST['song_diff'];
 //    $sid = 1;
 
     $link = ($GLOBALS["___mysqli_ston"] = mysqli_connect($db_server,  $db_user,  $db_pwd)) or die(mysqli_error($GLOBALS["___mysqli_ston"]));
@@ -15,7 +16,7 @@
         die(mysqli_error($GLOBALS["___mysqli_ston"]));
     }
 
-    $sql = "SELECT * FROM records WHERE song_id=('$sid') ORDER BY score DESC;";
+    $sql = "SELECT * FROM records WHERE song_id=('$sid') AND diff=('$sdiff') ORDER BY score DESC;";
     $res = mysqli_query($GLOBALS["___mysqli_ston"], $sql);
     
     if (!$res)

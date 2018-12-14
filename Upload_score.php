@@ -6,6 +6,7 @@
     $uid = $_POST['usr_ID'];
     $sid = $_POST['song_ID'];
     $score = $_POST['score'];
+    $sdiff = $_POST['song_diff'];
 
     $link = ($GLOBALS["___mysqli_ston"] = mysqli_connect($db_server,$db_user,$db_pwd)) or die(mysqli_error($GLOBALS["___mysqli_ston"]));
     $db_selected = mysqli_select_db( $link, $db_user);
@@ -16,7 +17,7 @@
         die(mysqli_error($GLOBALS["___mysqli_ston"]));
     }
 
-    $sql = "INSERT INTO records(`user_id`, `song_id`, `score`) VALUES ('$uid','$sid','$score');";
+    $sql = "INSERT INTO records(`user_id`, `song_id`, `diff`, `score`) VALUES ('$uid','$sid','$sdiff','$score');";
     echo $sql;
     mysqli_query($link, $sql);
 ?>
